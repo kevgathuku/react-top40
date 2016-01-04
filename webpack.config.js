@@ -11,6 +11,11 @@
       'webpack-dev-server/client?http://localhost:8080',
       path.resolve(__dirname, 'app/main.js')
     ],
+    node: {
+      fs: 'empty',
+      net: 'empty',
+      tls: 'empty'
+    },
     resolve: {
       alias: {
         'react': pathToReact
@@ -28,8 +33,11 @@
         query: {
           presets: ['es2015', 'react']
         }
+      }, {
+        test: /\.json$/,
+        loader: 'json-loader'
       }],
-      noParse: [pathToReact]
+      noParse: [pathToReact, /node_modules\/json-schema\/lib\/validate\.js/]
     }
   };
 })();

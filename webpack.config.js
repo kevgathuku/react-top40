@@ -2,6 +2,8 @@
   'use strict';
 
   let path = require('path');
+  let node_modules = path.resolve(__dirname, 'node_modules');
+  let pathToReact = path.resolve(node_modules, 'react/dist/react.min.js');
 
   module.exports = {
     entry: [
@@ -9,9 +11,14 @@
       'webpack-dev-server/client?http://localhost:8080',
       path.resolve(__dirname, 'app/main.js')
     ],
+    resolve: {
+      alias: {
+        'react': pathToReact
+      }
+    },
     output: {
       path: path.resolve(__dirname, 'build'),
-      filename: 'bundle.js',
+      filename: 'bundle.js'
     },
     module: {
       loaders: [{
@@ -21,7 +28,8 @@
         query: {
           presets: ['es2015', 'react']
         }
-      }]
+      }],
+      noParse: [pathToReact]
     }
   };
 })();

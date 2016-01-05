@@ -39,3 +39,6 @@ node_modules
 
 # Webpack bundled file
 build/bundle.js
+
+# Mac specific files
+.DS_Store

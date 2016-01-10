@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "description": "Fetch and display the UK Top 40 Singles Charts",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kevgathuku/react-top40.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kevgathuku/react-top40/issues"
+  },
+  "homepage": "https://github.com/kevgathuku/react-top40",
   "scripts": {
     "start": "nodemon ./server/bin/www",
     "build": "webpack",

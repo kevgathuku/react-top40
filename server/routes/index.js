@@ -3,10 +3,10 @@
 
   let express = require('express'),
     router = express.Router(),
-    Singles = require('../controllers/singles');
+    singles = require('../controllers/singles');
 
   router.route('/top40/api/singles')
-    .get(Singles.get);
+    .get(singles.get);
 
   module.exports = router;
 

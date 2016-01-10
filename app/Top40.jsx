@@ -2,8 +2,7 @@
   'use strict';
 
   let React = require('react');
-  var request = require('request');
-  var cheerio = require('cheerio');
+  var request = require('superagent');
 
   class Top40 extends React.Component {
     getInitialState() {
@@ -11,12 +10,11 @@
     }
 
     componentDidMount() {
-      request('http://www.bbc.co.uk/radio1/chart/singles/print', function(error, response, html) {
-        if (!error) {
-          // Next, we'll utilize the cheerio library on the returned html
-          var $ = cheerio.load(html);
-          console.log($.html());
-        }
+      request.get('/top40/api/singles')
+        .set('Accept', 'application/json')
+        .end(function(err, res) {
+        // Calling the end function will send the request
+        console.log(res.body);
       });
     }
 

@@ -13,7 +13,6 @@
   "homepage": "https://github.com/kevgathuku/react-top40",
   "scripts": {
     "start": "nodemon ./server/bin/www",
-    "build": "webpack",
     "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build"
   },
   "author": "Kevin Ndung'u",
@@ -25,7 +24,6 @@
     "dotenv": "^1.2.0",
     "express": "~4.13.1",
     "flux": "^2.1.1",
-    "jquery": "^2.2.0",
     "keymirror": "^0.1.1",
     "moment": "^2.11.0",
     "morgan": "~1.6.1",
@@ -42,6 +40,7 @@
     "babel-core": "^6.3.26",
     "babel-eslint": "^4.1.6",
     "babel-loader": "^6.2.0",
+    "bower": "^1.7.2",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.13.1",
     "json-loader": "^0.5.4",

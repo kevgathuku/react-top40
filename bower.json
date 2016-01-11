@@ -1,0 +1,27 @@
+{
+  "name": "top40",
+  "description": "Fetch and display the UK Top 40 Singles Charts",
+  "main": "index.js",
+  "authors": [
+    "Kevin Ndung'u"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/kevgathuku/react-top40",
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "bootstrap": "~3.3.6"
+  }
+}

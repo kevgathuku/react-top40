@@ -2,14 +2,14 @@
 (() => {
   'use strict';
 
-  var Webpack = require('webpack');
-  var WebpackDevServer = require('webpack-dev-server');
-  var webpackConfig = require('./../webpack.config.js');
+  let Webpack = require('webpack');
+  let WebpackDevServer = require('webpack-dev-server');
+  let webpackConfig = require('./../webpack.config.js');
 
   module.exports = function() {
     // First we fire up Webpack an pass in the configuration we created
-    var bundleStart = null;
-    var compiler = Webpack(webpackConfig);
+    let bundleStart = null;
+    let compiler = Webpack(webpackConfig);
 
     // We give notice in the terminal when it starts bundling and
     // set the time it started
@@ -24,7 +24,7 @@
       console.log('Bundled in ' + (Date.now() - bundleStart) + 'ms!');
     });
 
-    var bundler = new WebpackDevServer(compiler, {
+    let bundler = new WebpackDevServer(compiler, {
       // We need to tell Webpack to serve our bundled application
       // from the build path. When proxying:
       // http://localhost:3000/build -> http://localhost:8080/build

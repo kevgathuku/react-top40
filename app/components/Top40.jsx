@@ -29,9 +29,9 @@
       return (
         <div>
         <h1>The Official UK Top 40 Singles Chart</h1>
-        <p>{this.state.singles ?
+        {this.state.singles ?
             <Single entries={this.state.singles.entries} /> :
-             'Loading...'}</p>
+             <p>Loading...</p>}
         </div>
       );
     }

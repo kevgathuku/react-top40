@@ -5,7 +5,7 @@
 
   let Single = React.createClass({
     render: function() {
-      var renderSingle = function(single) {
+      let renderSingle = function(single) {
         return (
           <div className="col-xs-12 col-md-4">
             <p>{single.artist}</p>
@@ -13,7 +13,7 @@
         );
       };
       return (
-        <div>{this.props.entries.slice(0, 3).map(renderSingle)}</div>
+        <div>{this.props.entries.map(renderSingle)}</div>
       );
     }
   });

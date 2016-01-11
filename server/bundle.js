@@ -32,7 +32,7 @@
       headers: { "Access-Control-Allow-Origin": "*" },
       // Configure hot replacement
       hot: true,
-
+      debug: true,
       // The rest is terminal configurations
       quiet: false,
       noInfo: true,

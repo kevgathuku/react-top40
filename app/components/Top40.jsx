@@ -10,32 +10,28 @@
   let Top40 = React.createClass({
     getInitialState: function() {
       return {
-        singles: []
+        singles: null
       };
     },
 
-    componentDidMount: function() {
+    componentWillMount: function() {
       Top40Actions.getSingles();
       Top40Store.addChangeListener(this.populateSingles);
-    },
-
-    componentWillUnmount: function() {
-      Top40Store.removeChangeListener(this.populateSingles);
     },
 
 
     populateSingles: function() {
       let data = Top40Store.getData();
-      if (this.isMounted()) {
-        this.setState({singles: data});
-      }
+      this.setState({singles: data});
     },
 
     render: function() {
       return (
         <div>
-        <h1>Hello world!</h1>
-        <p> Hi there</p>
+        <h1>The Official UK Top 40 Singles Chart</h1>
+        <p>{this.state.singles ?
+            <Single entries={this.state.singles.entries} /> :
+             'Loading...'}</p>
         </div>
       );
     }

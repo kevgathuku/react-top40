@@ -2,21 +2,21 @@
 (() => {
   'use strict';
 
-  var express = require('express');
-  var path = require('path');
-  var httpProxy = require('http-proxy');
-  var favicon = require('serve-favicon');
-  var logger = require('morgan');
+  let express = require('express');
+  let path = require('path');
+  let httpProxy = require('http-proxy');
+  let favicon = require('serve-favicon');
+  let logger = require('morgan');
 
-  var routes = require('./routes/index');
-  var publicPath = path.resolve(__dirname, '..', 'public');
+  let routes = require('./routes/index');
+  let publicPath = path.resolve(__dirname, '..', 'public');
 
   require('dotenv').load();
 
-  var isProduction = process.env.NODE_ENV === 'production';
+  let isProduction = process.env.NODE_ENV === 'production';
 
-  var proxy = httpProxy.createProxyServer();
-  var app = express();
+  let proxy = httpProxy.createProxyServer();
+  let app = express();
 
   app.use(logger('dev'));
   // uncomment after placing your favicon in /public
@@ -29,7 +29,7 @@
     // We require the bundler inside the if block because
     // it is only needed in a development environment. Later
     // you will see why this is a good idea
-    var bundle = require('./bundle.js');
+    let bundle = require('./bundle.js');
     bundle();
 
     // Any requests to localhost:3000/build is proxied
@@ -54,7 +54,7 @@
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {
-    var err = new Error('Not Found');
+    let err = new Error('Not Found');
     err.status = 404;
     next(err);
   });

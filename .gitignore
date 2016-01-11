@@ -45,3 +45,6 @@ public/build/bundle.js
 
 # Env variables
 .env
+
+# Bower dependencies
+public/lib/

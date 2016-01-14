@@ -19,7 +19,6 @@
       Top40Store.addChangeListener(this.populateSingles);
     },
 
-
     populateSingles: function() {
       let data = Top40Store.getData();
       this.setState({singles: data});
@@ -28,10 +27,10 @@
     render: function() {
       return (
         <div>
-        <h1>The Official UK Top 40 Singles Chart</h1>
-        {this.state.singles ?
-            <Single entries={this.state.singles.entries} /> :
-             <p>Loading...</p>}
+          <h1>The Official UK Top 40 Singles Chart</h1>
+          {this.state.singles ?
+              <Single entries={this.state.singles.entries} /> :
+               <p>Loading...</p>}
         </div>
       );
     }

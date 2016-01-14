@@ -15,9 +15,8 @@
         // Save the data received from the backend to the store
         Top40Store.setData(action.data);
         break;
-
       default:
-        // no operation
+        // do nothing by default
     }
 
     return true; // No errors. Needed by promise in Dispatcher.

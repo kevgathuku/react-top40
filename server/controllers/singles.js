@@ -6,12 +6,20 @@
   let x = Xray();
 
   module.exports = {
-    get: function(req, res, next) {
+    get: (req, res) => {
       x('http://www.bbc.co.uk/radio1/chart/singles/print', {
         title: 'title',
         keys: ['th'],
         cells: ['td']
-      })(function(err, results) {
+      })((err, results) => {
+        // Extract the date portion from the page title
+        let dateArray = results.title.split(' ').slice(-3);
+        // Parse the date from a UTC timestamp to a Unix timestamp
+        let parsedDate = moment
+          .utc(dateArray.join(' '), 'Do MMMM YYYY')
+          .unix()
+          .toString();
+
         // Generate an array of all keys in lowercase
         let keys = results.keys.map(function(value) {
           return value.toLowerCase();
@@ -23,19 +31,12 @@
           singles.push(results.cells.slice(i, i + lenKeys));
         }
         // Convert the data to an array of singles objects with the correct keys
-        let result = singles.map(function(single) {
-          return single.reduce(function(final, field, index) {
+        let result = singles.map((single) => {
+          return single.reduce((final, field, index) => {
             final[keys[index]] = field;
             return final;
           }, {});
         });
-        // Extract the date portion from the page title
-        let dateArray = results.title.split(' ').slice(-3);
-        // Parse the date from a UTC timestamp to a Unix timestamp
-        let parsedDate = moment
-          .utc(dateArray.join(' '), 'Do MMMM YYYY')
-          .unix()
-          .toString();
 
         // Build the final object to be returned
         let apiSingles = {

@@ -42,6 +42,9 @@
       }, {
         test: /\.json$/,
         loader: 'json-loader'
+      }, {
+        test: /masonry|imagesloaded|fizzy\-ui\-utils|desandro\-|outlayer|get\-size|doc\-ready|eventie|eventemitter/,
+        loader: 'imports?define=>false&this=>window'
       }],
       noParse: [pathToReact, /node_modules\/json-schema\/lib\/validate\.js/]
     },

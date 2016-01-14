@@ -5,10 +5,10 @@
   let request = require('superagent');
 
   module.exports = {
-    get: function(url, actionType) {
+    get: (url, actionType) => {
       request
         .get(url)
-        .end(function(err, result) {
+        .end((err, result) => {
           Top40Dispatcher.dispatch({
             actionType: actionType,
             data: result.body
@@ -16,10 +16,10 @@
         });
     },
 
-    delete: function(url, data, actionType) {
+    delete: (url, data, actionType) => {
       request
         .delete(url)
-        .end(function(err, result) {
+        .end((err, result) => {
           Top40Dispatcher.dispatch({
             actionType: actionType,
             data: result.body
@@ -27,11 +27,11 @@
         });
     },
 
-    put: function(url, data, actionType) {
+    put: (url, data, actionType) => {
       request
         .get(url)
         .send(data)
-        .end(function(err, result) {
+        .end((err, result) => {
           Top40Dispatcher.dispatch({
             actionType: actionType,
             data: result.body
@@ -39,11 +39,11 @@
         });
     },
 
-    post: function(url, data, actionType) {
+    post: (url, data, actionType) => {
       request
         .post(url)
         .send(data)
-        .end(function(err, result) {
+        .end((err, result) => {
           Top40Dispatcher.dispatch({
             actionType: actionType,
             data: result.body

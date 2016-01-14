@@ -33,5 +33,7 @@
     }
   }
 
+  Single.propTypes = { entries: React.PropTypes.arrayOf(React.PropTypes.object) };
+
   module.exports = Single;
 })();

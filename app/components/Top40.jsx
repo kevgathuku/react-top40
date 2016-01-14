@@ -7,7 +7,7 @@
   let Top40Store = require('../stores/Top40Store');
   let Single = require('./Single.jsx');
 
-  class Top40 extends React.Component{
+  class Top40 extends React.Component {
     constructor() {
       super();
       this.state = {singles: null};

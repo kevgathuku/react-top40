@@ -34,7 +34,7 @@
 
     // Any requests to localhost:3000/build is proxied
     // to webpack-dev-server
-    app.all('/build/*', function(req, res) {
+    app.all('/build/*', (req, res) => {
       proxy.web(req, res, {
         target: 'http://localhost:8080/'
       });
@@ -45,7 +45,7 @@
   // It is important to catch any errors from the proxy or the
   // server will crash. An example of this is connecting to the
   // server when webpack is bundling
-  proxy.on('error', function() {
+  proxy.on('error', () => {
     console.log('Could not connect to proxy, please try again...');
   });
 
@@ -53,7 +53,7 @@
   app.use('/', routes);
 
   // catch 404 and forward to error handler
-  app.use(function(req, res, next) {
+  app.use((req, res, next) => {
     let err = new Error('Not Found');
     err.status = 404;
     next(err);
@@ -64,7 +64,7 @@
   // development error handler
   // will print stacktrace
   if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
+    app.use((err, req, res, next) => {
       if (res.headersSent) {
         return next(err);
       }
@@ -76,7 +76,7 @@
 
   // production error handler
   // no stacktraces leaked to user
-  app.use(function(err, req, res, next) {
+  app.use((err, req, res, next) => {
     if (res.headersSent) {
       return next(err);
     }

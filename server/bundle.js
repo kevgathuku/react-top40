@@ -13,14 +13,14 @@
 
     // We give notice in the terminal when it starts bundling and
     // set the time it started
-    compiler.plugin('compile', function() {
+    compiler.plugin('compile', () => {
       console.log('Bundling...');
       bundleStart = Date.now();
     });
 
     // We also give notice when it is done compiling, including the
     // time it took. Nice to have
-    compiler.plugin('done', function() {
+    compiler.plugin('done', () => {
       console.log('Bundled in ' + (Date.now() - bundleStart) + 'ms!');
     });
 
@@ -48,7 +48,7 @@
 
     // We fire up the development server and give notice in the terminal
     // that we are starting the initial bundle
-    bundler.listen(8080, 'localhost', function() {
+    bundler.listen(8080, 'localhost', () => {
       console.log('Bundling project, please wait...');
     });
 

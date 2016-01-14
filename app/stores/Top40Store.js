@@ -1,4 +1,4 @@
-(function() {
+(() => {
   'use strict';
 
   let assign = require('object-assign');
@@ -9,7 +9,7 @@
   let Top40Store = assign({}, BaseStore);
 
   // Register callback to handle all updates
-  AppDispatcher.register(function(action) {
+  AppDispatcher.register((action) => {
     switch (action.actionType) {
       case Top40Constants.SINGLES_GET:
         // Save the data received from the backend to the store

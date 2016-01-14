@@ -6,24 +6,24 @@
 
   let BaseStore = assign({}, EventEmitter.prototype, {
     data: null,
-    setData: function(data) {
+    setData: (data) => {
       this.data = data;
       this.emitChange();
     },
 
-    getData: function() {
+    getData: () => {
       return this.data;
     },
 
-    emitChange: function() {
+    emitChange: () => {
       this.emit('change');
     },
 
-    addChangeListener: function(callback) {
+    addChangeListener: (callback) => {
       this.on('change', callback);
     },
 
-    removeChangeListener: function(callback) {
+    removeChangeListener: (callback) => {
       this.removeListener('change', callback);
     }
   });

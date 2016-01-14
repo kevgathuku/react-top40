@@ -9,8 +9,8 @@
       gutter: 20
   };
 
-  let Single = React.createClass({
-    render: function() {
+  class Single extends React.Component {
+    render() {
       let renderSingle = function(single) {
         let options = [200, 250, 300, 350, 400];
         let width = options[Math.floor(Math.random() * options.length)];
@@ -31,7 +31,7 @@
             </Masonry>
       );
     }
-  });
+  }
 
   module.exports = Single;
 })();

@@ -5,7 +5,7 @@
     BaseActions = require('./BaseActions');
 
   module.exports = {
-    getSingles: function() {
+    getSingles: () => {
       BaseActions.get('/top40/api/singles', Top40Constants.SINGLES_GET);
     }
   };

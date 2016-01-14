@@ -21,7 +21,7 @@
           .toString();
 
         // Generate an array of all keys in lowercase
-        let keys = results.keys.map(function(value) {
+        let keys = results.keys.map((value) => {
           return value.toLowerCase();
         });
         // Split cells into array containing individual singles data as an array

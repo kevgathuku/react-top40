@@ -5,8 +5,8 @@
   let Masonry = require('react-masonry-component');
 
   let masonryOptions = {
-      transitionDuration: 0,
-      gutter: 20
+    transitionDuration: 0,
+    gutter: 20
   };
 
   class Single extends React.Component {
@@ -17,23 +17,22 @@
         return (
           <div className="item">
             <h5>{single.title} <small>{single.artist}</small></h5>
-            <img alt="Image" src={`http://lorempixel.com/${width}/400`} />
+            <img alt="Image" src={`http://lorempixel.com/${width}/400`}/>
           </div>
         );
       };
 
       return (
-            <Masonry
-                className={'grid'}
-                options={masonryOptions}
-            >
-              {this.props.entries.map(renderSingle)}
-            </Masonry>
+        <Masonry className={'grid'} options={masonryOptions}>
+          {this.props.entries.map(renderSingle)}
+        </Masonry>
       );
     }
   }
 
-  Single.propTypes = { entries: React.PropTypes.arrayOf(React.PropTypes.object) };
+  Single.propTypes = {
+    entries: React.PropTypes.arrayOf(React.PropTypes.object)
+  };
 
   module.exports = Single;
 })();

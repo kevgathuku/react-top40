@@ -3,8 +3,9 @@
 
   let path = require('path');
   let Webpack = require('webpack');
-  let node_modules = path.resolve(__dirname, 'node_modules');
-  let pathToReact = path.resolve(node_modules, 'react/dist/react.min.js');
+  let nodeModulesPath = path.resolve(__dirname, 'node_modules');
+  let pathToReact = path.resolve(nodeModulesPath, 'react/dist/react.js');
+  let pathToReactDOM = path.resolve(nodeModulesPath, 'react-dom/dist/react-dom.min.js');
   let buildPath = path.resolve(__dirname, 'public', 'build');
   let mainPath = path.resolve(__dirname, 'app', 'main.js');
 
@@ -19,7 +20,8 @@
     target: 'web',
     resolve: {
       alias: {
-        'react': pathToReact
+        'react': pathToReact,
+        'react-dom': pathToReactDOM
       }
     },
     output: {
@@ -32,6 +34,13 @@
       publicPath: 'http://localhost:8080/build/'
     },
     module: {
+      preLoaders: [{
+        // Eslint loader
+        test: /\.jsx?$/,
+        loader: 'eslint-loader',
+        include: [path.resolve(__dirname, 'app')],
+        exclude: [nodeModulesPath]
+      }],
       loaders: [{
         test: /\.jsx?$/, // A regexp to test the require path. works for js or jsx
         loader: 'babel', // The module to load. "babel" is short for "babel-loader"
@@ -48,7 +57,10 @@
       }],
       noParse: [pathToReact, /node_modules\/json-schema\/lib\/validate\.js/]
     },
-
+    // eslint config options. Part of the eslint-loader package
+    eslint: {
+      configFile: '.eslintrc'
+    },
     // We have to manually add the Hot Replacement plugin when running
     // from Node
     plugins: [

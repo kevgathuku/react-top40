@@ -5,7 +5,7 @@
   let Webpack = require('webpack');
   let nodeModulesPath = path.resolve(__dirname, 'node_modules');
   let pathToReact = path.resolve(nodeModulesPath, 'react/dist/react.js');
-  let pathToReactDOM = path.resolve(nodeModulesPath, 'react-dom/dist/react-dom.min.js');
+  let pathToReactDOM = path.resolve(nodeModulesPath, 'react-dom/dist/react-dom.js');
   let buildPath = path.resolve(__dirname, 'public', 'build');
   let mainPath = path.resolve(__dirname, 'app', 'main.js');
 

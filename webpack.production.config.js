@@ -40,12 +40,6 @@
       new webpack.NoErrorsPlugin()
     ],
     module: {
-      preLoaders: [{
-        test: /\.(js|jsx)$/,
-        loader: 'eslint-loader',
-        include: [path.resolve(__dirname, 'app')],
-        exclude: [nodeModulesPath]
-      }],
       loaders: [{
         test: /\.(js|jsx)$/, // All .js and .jsx files
         loader: 'babel', // babel loads jsx and es6-7
@@ -58,10 +52,6 @@
         loader: 'imports?define=>false&this=>window'
       }],
       noParse: [pathToReact]
-    },
-    // Eslint config
-    eslint: {
-      configFile: '.eslintrc' // Rules for eslint
     }
   };
 

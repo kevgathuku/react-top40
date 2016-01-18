@@ -13,8 +13,8 @@
   "homepage": "https://github.com/kevgathuku/react-top40",
   "scripts": {
     "start": "nodemon ./server/bin/www",
-    "deploy": "NODE_ENV=production webpack -p --config webpack.production.config.js --progress --colors",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "deploy": "webpack -p --config webpack.production.config.js --progress --colors",
+    "postinstall": "./node_modules/bower/bin/bower install && npm run deploy"
   },
   "author": "Kevin Ndung'u",
   "license": "ISC",

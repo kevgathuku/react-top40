@@ -15,7 +15,7 @@
         let options = [200, 250, 300, 350, 400];
         let width = options[Math.floor(Math.random() * options.length)];
         return (
-          <div className="item">
+          <div className="item" key={single.position}>
             <h5>{single.title} <small>{single.artist}</small></h5>
             <img alt="Image" src={`http://lorempixel.com/${width}/400`}/>
           </div>

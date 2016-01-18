@@ -39,7 +39,7 @@
         // Eslint loader
         test: /\.jsx?$/,
         loader: 'eslint-loader',
-        include: [path.ressolve(__dirname, 'app')],
+        include: [path.resolve(__dirname, 'app')],
         exclude: [nodeModulesPath]
       }],
       loaders: [{

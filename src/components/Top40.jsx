@@ -10,11 +10,6 @@ class Top40 extends React.Component {
     this.state = {
       singles: null
     };
-    // React components using ES6 classes no longer
-    // autobind this to non React methods.
-    // This is required in the constructor
-    // to make 'this' available to non React methods
-    this.populateSingles = this.populateSingles.bind(this);
   }
 
   componentWillMount() {
@@ -22,7 +17,7 @@ class Top40 extends React.Component {
     Top40Store.addChangeListener(this.populateSingles);
   }
 
-  populateSingles() {
+  populateSingles = () => {
     let data = Top40Store.getData();
     this.setState({singles: data});
   }

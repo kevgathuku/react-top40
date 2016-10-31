@@ -1,9 +1,5 @@
-(() => {
-  'use strict';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Top40 from './components/Top40';
 
-  let React = require('react');
-  let ReactDOM = require('react-dom');
-  let Top40 = require('./components/Top40.jsx');
-
-  ReactDOM.render(<Top40 /> , document.getElementById('content'));
-})();
+ReactDOM.render(<Top40 /> , document.getElementById('content'));

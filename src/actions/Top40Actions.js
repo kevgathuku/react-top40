@@ -1,5 +1,3 @@
-'use strict';
-
 import Top40Constants from '../constants/Top40Constants';
 import BaseActions from './BaseActions';
 

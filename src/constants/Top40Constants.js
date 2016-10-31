@@ -1,9 +1,5 @@
-(() => {
-  'use strict';
+import keyMirror from 'keymirror';
 
-  let keyMirror = require('keymirror');
-
-  module.exports = keyMirror({
-    SINGLES_GET: null
-  });
-})();
+export default keyMirror({
+  SINGLES_GET: null
+});

@@ -1,12 +1,12 @@
-(() => {
-  'use strict';
+'use strict';
 
-  let Top40Constants = require('../constants/Top40Constants'),
-    BaseActions = require('./BaseActions');
+import Top40Constants from '../constants/Top40Constants';
+import BaseActions from './BaseActions';
 
-  module.exports = {
-    getSingles: () => {
-      BaseActions.get('/top40/api/singles', Top40Constants.SINGLES_GET);
-    }
-  };
-})();
+let TOP40_API_URL = 'https://wckb0ftk67.execute-api.eu-west-1.amazonaws.com/dev/singles';
+
+module.exports = {
+  getSingles: () => {
+    BaseActions.get(TOP40_API_URL, Top40Constants.SINGLES_GET);
+  }
+};

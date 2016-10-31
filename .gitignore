@@ -37,9 +37,6 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
-# Webpack bundled file
-public/build/bundle.js
-
 # Mac specific files
 .DS_Store
 
@@ -49,5 +46,5 @@ public/build/bundle.js
 # Bower dependencies
 public/lib/
 
-# Generated bundle
-public/build/
+# production
+build

@@ -1,15 +1,33 @@
 import Top40Dispatcher from '../dispatcher/Top40Dispatcher';
 import request from 'superagent';
+import jsonp from 'superagent-jsonp';
 
 export default {
-  get: (url, actionType) => {
+  get: (url, actionType, queryObject={}) => {
     request
       .get(url)
+      .query(queryObject)
       .end((err, result) => {
         Top40Dispatcher.dispatch({
           actionType: actionType,
           data: result.body
         });
+      });
+  },
+
+  jsonp: (url, actionType, queryObject={}) => {
+    request
+      .get(url)
+      .use(jsonp)
+      .query(queryObject)
+      .end((err, result) => {
+        // The result is sometimes null
+        if (result) {
+          Top40Dispatcher.dispatch({
+            actionType: actionType,
+            data: result
+          });
+        }
       });
   },
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Masonry from 'react-masonry-component';
 import Top40Actions from '../actions/Top40Actions';
 import Top40Store from '../stores/Top40Store';
-import Single from './Single.jsx';
+import Track from './Track.jsx';
 
 const masonryOptions = {
   transitionDuration: 0,
@@ -13,7 +13,7 @@ class Top40 extends React.Component {
   constructor() {
     super();
     this.state = {
-      singles: null
+      tracks: null
     };
   }
 
@@ -24,21 +24,21 @@ class Top40 extends React.Component {
 
   populateSingles = () => {
     let data = Top40Store.getData();
-    this.setState({singles: data.entries});
+    this.setState({tracks: data.entries});
   }
 
   render() {
-    let renderSingle = function(single) {
+    let renderTrack = function(track) {
       return (
-        <Single track={single} key={single.position}/>
+        <Track track={track} key={track.position}/>
       );
     };
     return (
       <div>
         <h1>The Official UK Top 40 Singles Chart</h1>
-        {this.state.singles && this.state.singles.length > 1
+        {this.state.tracks && this.state.tracks.length > 1
           ? <Masonry className={'grid'} options={masonryOptions}>
-             {this.state.singles.map(renderSingle)}
+             {this.state.tracks.map(renderTrack)}
             </Masonry>
           : <p>Loading...</p>}
       </div>

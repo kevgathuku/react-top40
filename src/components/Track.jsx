@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Single extends React.Component {
+class Track extends React.Component {
   static propTypes = {
     track: React.PropTypes.object
   }
@@ -23,6 +23,6 @@ class Single extends React.Component {
   }
 }
 
-export default Single;
+export default Track;
 
 // <img alt={single.title} src={`http://lorempixel.com/${width}/400`}/>

@@ -8,6 +8,7 @@ let Top40Store = Object.assign({}, BaseStore, {
 
   setSingles: function(data) {
     this.singles = data;
+    localStorage.setItem('singles', JSON.stringify(data));
     this.emitChange();
   },
 

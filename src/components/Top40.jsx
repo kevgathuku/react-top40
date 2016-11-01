@@ -18,12 +18,21 @@ class Top40 extends React.Component {
   }
 
   componentDidMount() {
-    Top40Actions.getSingles();
-    Top40Store.addChangeListener(this.populateSingles);
+    let cachedSingles = JSON.parse(localStorage.getItem('singles'));
+    if (cachedSingles) {
+      this.setStateFromCache(cachedSingles);
+    } else {
+      Top40Actions.getSingles();
+      Top40Store.addChangeListener(this.populateSingles);
+    }
   }
 
   componentWillUnmount() {
     Top40Store.removeChangeListener(this.populateSingles);
+  }
+
+  setStateFromCache = (cachedSingles) => {
+    this.setState({tracks: cachedSingles.entries});
   }
 
   populateSingles = () => {

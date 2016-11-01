@@ -1,4 +1,6 @@
 import React from 'react';
+import Top40Actions from '../actions/Top40Actions';
+import Top40Store from '../stores/Top40Store';
 
 class Track extends React.Component {
   static propTypes = {
@@ -8,15 +10,35 @@ class Track extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      track: this.props.track
+      track: this.props.track,
+      artworkUrl: null
     };
   }
+
+  componentDidMount() {
+    if (this.state.track.position === 25) {
+      Top40Actions.fetchTrackInfo(this.state.track);
+    }
+    Top40Store.addChangeListener(this.handleTrackInfo, 'trackInfo');
+  }
+
+  componentWillUnmount() {
+    Top40Store.removeChangeListener(this.handleTrackInfo, 'trackInfo');
+  }
+
+  handleTrackInfo = () => {
+    let data = Top40Store.getTrackInfo();
+    this.setState({
+      artworkUrl: data.artworkUrl100
+    });
+  }
+
   render() {
     return (
       <div className="item">
         <h5>{this.state.track.title} <small>{this.state.track.artist}</small></h5>
           {this.state.track.position === 25
-            ? <img alt={this.state.track.title} src="http://is3.mzstatic.com/image/thumb/Music62/v4/f7/93/79/f79379c8-86c0-fca6-6d46-5d027d6936e7/source/100x100bb.jpg"/>
+            ? <img alt={this.state.track.title} src={this.state.artworkUrl}/>
             : <br/>}
       </div>
     );

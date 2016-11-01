@@ -17,6 +17,6 @@ module.exports = {
       entity: 'musicTrack',
       limit: 1
     };
-    BaseActions.jsonp(ITUNES_BASE_URL, Top40Constants.TRACK_INFO, queryParams);
+    BaseActions.jsonp(ITUNES_BASE_URL, Top40Constants.TRACK_INFO, track.position, queryParams);
   }
 };

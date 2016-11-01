@@ -11,40 +11,49 @@ class Track extends React.Component {
     super(props);
     this.state = {
       track: this.props.track,
-      artworkUrl: null
+      itunesTrackInfo: null
     };
   }
 
   componentDidMount() {
-    if (this.state.track.position === 25) {
+    let cachedTrack = JSON.parse(localStorage.getItem(this.state.track.position));
+    if (cachedTrack) {
+      this.setStateFromCache(cachedTrack);
+    } else {
       Top40Actions.fetchTrackInfo(this.state.track);
+      Top40Store.addChangeListener(this.handleTrackInfo, 'trackInfo');
     }
-    Top40Store.addChangeListener(this.handleTrackInfo, 'trackInfo');
   }
 
   componentWillUnmount() {
     Top40Store.removeChangeListener(this.handleTrackInfo, 'trackInfo');
   }
 
+  setStateFromCache = (cachedTrack) => {
+    this.setState({
+      itunesTrackInfo: cachedTrack
+    });
+  }
+
   handleTrackInfo = () => {
     let data = Top40Store.getTrackInfo();
-    this.setState({
-      artworkUrl: data.artworkUrl100
-    });
+    if (data) {
+      this.setState({
+        itunesTrackInfo: data
+      });
+    }
   }
 
   render() {
     return (
       <div className="item">
         <h5>{this.state.track.title} <small>{this.state.track.artist}</small></h5>
-          {this.state.track.position === 25
-            ? <img alt={this.state.track.title} src={this.state.artworkUrl}/>
-            : <br/>}
+          {this.state.itunesTrackInfo
+            ? <img alt={this.state.track.title} src={this.state.itunesTrackInfo.artworkUrl100}/>
+            : <img alt={this.state.track.title} src={'http://lorempixel.com/100/100'}/>}
       </div>
     );
   }
 }
 
 export default Track;
-
-// <img alt={single.title} src={`http://lorempixel.com/${width}/400`}/>

@@ -15,7 +15,7 @@ export default {
       });
   },
 
-  jsonp: (url, actionType, queryObject={}) => {
+  jsonp: (url, actionType, position, queryObject={}) => {
     request
       .get(url)
       .use(jsonp)
@@ -25,7 +25,8 @@ export default {
         if (result) {
           Top40Dispatcher.dispatch({
             actionType: actionType,
-            data: result
+            data: result.body,
+            position: position
           });
         }
       });

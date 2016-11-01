@@ -17,13 +17,17 @@ class Top40 extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     Top40Actions.getSingles();
     Top40Store.addChangeListener(this.populateSingles);
   }
 
+  componentWillUnmount() {
+    Top40Store.removeChangeListener(this.populateSingles);
+  }
+
   populateSingles = () => {
-    let data = Top40Store.getData();
+    let data = Top40Store.getSingles();
     this.setState({tracks: data.entries});
   }
 

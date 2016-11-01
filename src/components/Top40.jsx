@@ -27,18 +27,19 @@ class Top40 extends React.Component {
     this.setState({tracks: data.entries});
   }
 
+  renderTrack = (track) => {
+    return (
+      <Track track={track} key={track.position}/>
+    );
+  }
+
   render() {
-    let renderTrack = function(track) {
-      return (
-        <Track track={track} key={track.position}/>
-      );
-    };
     return (
       <div>
         <h1>The Official UK Top 40 Singles Chart</h1>
         {this.state.tracks && this.state.tracks.length > 1
           ? <Masonry className={'grid'} options={masonryOptions}>
-             {this.state.tracks.map(renderTrack)}
+             {this.state.tracks.map(this.renderTrack)}
             </Masonry>
           : <p>Loading...</p>}
       </div>
